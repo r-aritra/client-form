@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { InputComponent } from './atoms/Input'
+import { DatePickerInput } from './atoms/DatePickerInput'
+import { SelectInput } from './atoms/SelectInput'
 
 function App() {
+  const [value, setValue] = useState('')
+  const [date, setDate] = useState<any>('')
+  const [select, setSelect] = useState<any>('')
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +25,29 @@ function App() {
         >
           Learn React
         </a>
+        <InputComponent
+          value={value}
+          onChange={setValue}
+          placeholder={"Input Type"}
+        />
+
+        <DatePickerInput
+          handleTimeChange={(value) => setDate(value)}
+          time={date}
+        />
+
+        <SelectInput
+          optionList={
+            [
+              { value: "blues", label: "Blues" },
+              { value: "rock", label: "Rock" },
+              { value: "jazz", label: "Jazz" },
+              { value: "orchestra", label: "Orchestra" },
+            ]
+          }
+          value={select}
+          onChange={(value: string) => setSelect(value)}
+        />
       </header>
     </div>
   );
