@@ -1,8 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { CheckboxInputComponent as CommonInput } from './index';
+import { NumberInputComponent as CommonInput } from './index';
 
 export default {
-  title: 'atoms/Input/CommonInput',
+  title: 'atoms/NumberInput',
   component: CommonInput,
 } as ComponentMeta<typeof CommonInput>;
 const Template: ComponentStory<typeof CommonInput> = (args) => {

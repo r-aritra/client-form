@@ -17,7 +17,6 @@ const DatePickerInput: React.FC<{
   return (
     <>
       <ReactDatePicker
-
         onChange={handleTimeChange}
         className={classStr}
         placeholderText={placeholder}
