@@ -1,54 +1,55 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { InputComponent } from './atoms/Input'
-import { DatePickerInput } from './atoms/DatePickerInput'
-import { SelectInput } from './atoms/SelectInput'
+import { ServiceInput } from './molecules/ServiceInput';
+import { MandatoryInput } from './molecules/CheckboxInput';
+import { ServiceTypeSelect } from './molecules/ServiceTypeSelect';
+import { CategorySelect } from './molecules/CategorySelect';
+import { PriceInput } from './molecules/PriceInput';
+import { BillingTypeSelect } from './molecules/BillingTypeSelect';
+import { billingTypeList, CategoryList, serviceTypeList } from './appConstants'
 
 function App() {
-  const [value, setValue] = useState('')
-  const [date, setDate] = useState<any>('')
-  const [select, setSelect] = useState<any>('')
+  const [service, setService] = useState('')
+  const [mandatory, setMandatory] = useState<any>(false)
+  const [serviceType, setServiceType] = useState<any>('')
+  const [category, setCategory] = useState<any>('')
+  const [price, setPrice] = useState<any>('')
+  const [billingType, setBillingType] = useState<any>('')
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <InputComponent
-          value={value}
-          onChange={setValue}
-          placeholder={"Input Type"}
-        />
+      <ServiceInput
+        value={service}
+        onChange={setService}
+      />
 
-        <DatePickerInput
-          handleTimeChange={(value) => setDate(value)}
-          time={date}
-        />
+      <MandatoryInput
+        value={mandatory}
+        onChange={setMandatory}
+      />
 
-        <SelectInput
-          optionList={
-            [
-              { value: "blues", label: "Blues" },
-              { value: "rock", label: "Rock" },
-              { value: "jazz", label: "Jazz" },
-              { value: "orchestra", label: "Orchestra" },
-            ]
-          }
-          value={select}
-          onChange={(value: string) => setSelect(value)}
-        />
-      </header>
+      <ServiceTypeSelect
+        optionList={serviceTypeList}
+        value={serviceType}
+        onChange={setServiceType}
+      />
+
+      <CategorySelect
+        optionList={CategoryList}
+        value={category}
+        onChange={setCategory}
+      />
+
+      <PriceInput
+        value={price}
+        onChange={setPrice}
+      />
+
+      <BillingTypeSelect
+        optionList={billingTypeList}
+        value={billingType}
+        onChange={setBillingType}
+      />
     </div>
   );
 }
