@@ -34,14 +34,14 @@ const Component: React.FC<Props> = ({ data, columns, tableHeader }) => {
             <tr key={item.id}>
               <td align="justify">
                 <input type="checkbox" />
-                {item.Services}
+                {item?.name}
               </td>
-              <td>${item.Price}</td>
+              <td>${item?.price}</td>
               <td>
                 <input type="number" value="{item.Quantity}" />
               </td>
               <td>${item.Subtotal}</td>
-              <td>{item.BillingType}</td>
+              <td>{item?.billing_type}</td>
             </tr>
           ))}
         </tbody>
